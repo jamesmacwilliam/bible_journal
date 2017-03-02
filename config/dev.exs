@@ -36,7 +36,7 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :bible_journal, BibleJournal.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: System.get_env("username"),
+  username: System.get_env("USERNAME") || System.get_env("USER"),
   password: "",
   database: "bible_journal_dev",
   hostname: "localhost",
