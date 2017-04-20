@@ -12,8 +12,8 @@ config :logger, level: :warn
 # Configure your database
 config :bible_journal, BibleJournal.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: System.get_env("USERNAME") || System.get_env("USER"),
+  password: "",
   database: "bible_journal_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

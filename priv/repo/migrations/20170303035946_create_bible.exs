@@ -2,21 +2,14 @@ defmodule BibleJournal.Repo.Migrations.CreateBible do
   use Ecto.Migration
 
   def up do
-    TestamentEnum.create_type
-    VersionEnum.create_type
-    BookEnum.create_type
-
     create table(:bibles) do
       add :chapter, :integer
       add :verse, :integer
+      add :testament, :string, size: 1
+      add :book, :string, size: 2
       add :content, :text
     end
-  end
 
-  def down do
-    drop table(:bibles)
-    TestamentEnum.drop_type
-    VersionEnum.drop_type
-    BookEnum.drop_type
+    create index(:bibles, [:book])
   end
 end
